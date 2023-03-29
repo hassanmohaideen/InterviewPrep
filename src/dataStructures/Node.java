@@ -29,6 +29,70 @@ public class Node {
         return curr;
     }
 
+    public void deleteNodeFromData(int d) {
+        Node curr = this;
+        if (curr.data == d) {
+            return;
+        }
+
+        while (curr.next != null) {
+            if (curr.next.data == d) {
+                curr.next = curr.next.next;
+                return;
+            }
+            curr = curr.next;
+        }
+    }
+
+    public void weaveNodes() {
+        Node fastRunner = this;
+        Node slowRunner = this;
+
+        while(fastRunner != null && fastRunner.next != null) {
+            fastRunner = fastRunner.next.next;
+            slowRunner = slowRunner.next;
+        }
+        System.out.println(slowRunner.data);
+
+        Node weaveHead = this;
+        Node weaveHeadNext = this.next;
+        Node middleHead = slowRunner;
+        Node middleHeadNext = slowRunner.next;
+
+        while (middleHead != null) {
+            System.out.println(weaveHead.data);
+            System.out.println(middleHead.data);
+
+            weaveHead.next = middleHead;
+            // Make sure to add this to the weave
+            if (middleHeadNext == null) {
+                middleHead.next = null;
+                return;
+            }
+
+            middleHead.next = weaveHeadNext;
+
+            weaveHead = weaveHeadNext;
+            weaveHeadNext = weaveHeadNext.next;
+
+            middleHead = middleHeadNext;
+            middleHeadNext = middleHeadNext.next;
+        }
+    }
+
+    public String toString() {
+        StringBuilder s = new StringBuilder(String.valueOf(this.data));
+        s.append(" -> ");
+        Node curr = this;
+        while (curr.next != null) {
+            curr = curr.next;
+            s.append(curr.data);
+            s.append(" -> ");
+        }
+        s.append("null");
+        return s.toString();
+    }
+
 }
 
 
