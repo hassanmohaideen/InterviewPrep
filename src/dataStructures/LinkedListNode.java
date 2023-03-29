@@ -1,36 +1,36 @@
 package dataStructures;
 
-public class Node {
+public class LinkedListNode {
 
-    Node next = null;
+    LinkedListNode next = null;
     int data;
 
-    public Node(int d) {
+    public LinkedListNode(int d) {
         data = d;
     }
 
-    public Node(int d, Node n) {
+    public LinkedListNode(int d, LinkedListNode n) {
         data = d;
         next = n;
     }
 
     public void appendDataToTail(int d) {
-        getTail(this).next = new Node(d);
+        getTail(this).next = new LinkedListNode(d);
     }
 
-    public void appendNodeToTail(Node n) {
+    public void appendLinkedListNodeToTail(LinkedListNode n) {
         getTail(this).next = n;
     }
 
-    public Node getTail(Node curr) {
+    public LinkedListNode getTail(LinkedListNode curr) {
         while (curr.next != null) {
             curr = curr.next;
         }
         return curr;
     }
 
-    public void deleteNodeFromData(int d) {
-        Node curr = this;
+    public void deleteLinkedListNodeFromData(int d) {
+        LinkedListNode curr = this;
         if (curr.data == d) {
             return;
         }
@@ -44,9 +44,9 @@ public class Node {
         }
     }
 
-    public void weaveNodes() {
-        Node fastRunner = this;
-        Node slowRunner = this;
+    public void weaveLinkedListNodes() {
+        LinkedListNode fastRunner = this;
+        LinkedListNode slowRunner = this;
 
         while(fastRunner != null && fastRunner.next != null) {
             fastRunner = fastRunner.next.next;
@@ -54,10 +54,10 @@ public class Node {
         }
         System.out.println(slowRunner.data);
 
-        Node weaveHead = this;
-        Node weaveHeadNext = this.next;
-        Node middleHead = slowRunner;
-        Node middleHeadNext = slowRunner.next;
+        LinkedListNode weaveHead = this;
+        LinkedListNode weaveHeadNext = this.next;
+        LinkedListNode middleHead = slowRunner;
+        LinkedListNode middleHeadNext = slowRunner.next;
 
         while (middleHead != null) {
             weaveHead.next = middleHead;
@@ -80,7 +80,7 @@ public class Node {
     public String toString() {
         StringBuilder s = new StringBuilder(String.valueOf(this.data));
         s.append(" -> ");
-        Node curr = this;
+        LinkedListNode curr = this;
         while (curr.next != null) {
             curr = curr.next;
             s.append(curr.data);
