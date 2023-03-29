@@ -60,9 +60,6 @@ public class Node {
         Node middleHeadNext = slowRunner.next;
 
         while (middleHead != null) {
-            System.out.println(weaveHead.data);
-            System.out.println(middleHead.data);
-
             weaveHead.next = middleHead;
             // Make sure to add this to the weave
             if (middleHeadNext == null) {
