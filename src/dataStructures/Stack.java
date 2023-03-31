@@ -18,13 +18,17 @@ public class Stack<T> {
 
     public StackNode<T> pushData(T d) {
         StackNode<T> node = new StackNode<T>(d);
-        node.next = top;
+        if (top != null) {
+            node.next = top;
+        }
         top = node;
         return top;
     }
 
     public StackNode<T> pushNode(StackNode<T> n) {
-        n.next = top;
+        if (top != null) {
+            n.next = top;
+        }
         top = n;
         return top;
     }

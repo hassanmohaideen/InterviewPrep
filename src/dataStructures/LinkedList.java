@@ -13,11 +13,19 @@ public class LinkedList<T> {
     }
 
     public void appendDataToTail(T d) {
-        getTail(head).next = new LinkedListNode<T>(d);
+        if (head == null) {
+            head = new LinkedListNode<T>(d);
+        } else {
+            getTail(head).next = new LinkedListNode<T>(d);
+        }
     }
 
     public void appendLinkedListNodeToTail(LinkedListNode<T> n) {
-        getTail(head).next = n;
+        if (head == null) {
+            head = n;
+        } else {
+            getTail(head).next = n;
+        }
     }
 
     public LinkedListNode<T> getTail(LinkedListNode<T> curr) {
