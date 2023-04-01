@@ -1,27 +1,22 @@
 import dataStructures.LinkedList;
 import dataStructures.LinkedListNode;
+import dataStructures.MinHeap;
 
 public class Main {
     public static void main(String[] args) {
-        LinkedList linkedListHead = new LinkedList<>(0);
-        linkedListHead.appendDataToTail(10);
-        linkedListHead.appendLinkedListNodeToTail(new LinkedListNode<>(11));
-        linkedListHead.deleteLinkedListNodeFromData(10);
-
-        linkedListHead.appendLinkedListNodeToTail(new LinkedListNode<>(12));
-        linkedListHead.appendLinkedListNodeToTail(new LinkedListNode<>(13));
-        linkedListHead.appendLinkedListNodeToTail(new LinkedListNode<>(14));
-        linkedListHead.appendLinkedListNodeToTail(new LinkedListNode<>(15));
-        linkedListHead.appendLinkedListNodeToTail(new LinkedListNode<>(16));
-        linkedListHead.appendLinkedListNodeToTail(new LinkedListNode<>(17));
-        linkedListHead.appendLinkedListNodeToTail(new LinkedListNode<>(18));
-        linkedListHead.appendLinkedListNodeToTail(new LinkedListNode<>(19));
-        linkedListHead.appendLinkedListNodeToTail(new LinkedListNode<>(20));
-        linkedListHead.appendLinkedListNodeToTail(new LinkedListNode<>(21));
-
-        System.out.println(linkedListHead);
-
-        linkedListHead.weaveLinkedListNodes();
-        System.out.println(linkedListHead);
+        MinHeap minHeap = new MinHeap();
+        minHeap.insert(9);
+        minHeap.insert(8);
+        minHeap.insert(7);
+        minHeap.insert(6);
+        minHeap.insert(5);
+        minHeap.insert(4);
+        minHeap.insert(3);
+        minHeap.insert(2);
+        minHeap.insert(1);
+        minHeap.insert(0);
+//        System.out.println(minHeap.extractMin());
+//        System.out.println(minHeap.items);
+        minHeap.dump();
     }
 }
