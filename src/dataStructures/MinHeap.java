@@ -98,8 +98,7 @@ public class MinHeap {
         int level = 0;
         int numberOfItemsToTakeForLevel = (int) Math.pow(2, level);
         int height = log2(this.items.size()) + 1;
-        for (int i = 0; i < this.items.size(); i++) {
-            int numberToDisplay = this.items.get(i);
+        for (int numberToDisplay : this.items) {
             int spaces = (height - level) * 2;
 
             System.out.print(stringOfSize(spaces, ' '));
