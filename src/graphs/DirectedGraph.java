@@ -5,9 +5,7 @@ import dataStructures.TreeNode;
 import java.util.*;
 
 public class DirectedGraph {
-
     List<TreeNode<Integer>> nodes;
-
     public DirectedGraph(int[][] edgeMatrix) {
         nodes = new ArrayList<>();
         if (edgeMatrix[0].length != 2) {
