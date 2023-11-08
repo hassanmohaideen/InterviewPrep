@@ -76,9 +76,10 @@ private int height(TreeNode root) {
   * We can use a max heap to get the Kth smallest value. 
 # Concepts
 ## Backtracking
-* A lot of backtracking involves passing a bunch of parameters into a recursive call
+* A lot of backtracking involves passing a bunch of parameters into a recursive call.
 * The parameters are usually something like: 
   * The data structure that is going to hold the answer: List<List<Integer>> ans
   * The data structure that is going to hold the current permutation: List<Integer> curr
   * The data structure that holds integers that we take from (in the example of permutations the list of nums to make the permutations of): Int[] nums
   * The integer representing the index from a. which to start from or b. from which to just simply take the value from nums
+* After making the recursive call, you will typically have to remove the element that you just added. The idea is that you choose one element and then not choose the next.
