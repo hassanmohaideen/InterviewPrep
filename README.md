@@ -45,7 +45,10 @@
 * Top down
   * You put the conditional check BEFORE recursively going down into each child node
 * Bottom up 
-  * You put the conditional check AFTER recursilvely going down into each child node
+  * You put the conditional check AFTER recursively going down into each child node
+* When determining whether to go top down or bottom up think about how you would solve the question. 
+  * Do you need information from the bottom nodes to resolve the current node? 
+  * Do you need information from the top node to resolve the current node?
 * Getting the height of a tree is easy!
 ```java
 private int height(TreeNode root) {
@@ -74,6 +77,40 @@ private int height(TreeNode root) {
 ### Min/Max Heaps
 * Think about using this in the reverse way. Instead of just getting the minimum value, we can get the Kth largest value. 
   * We can use a max heap to get the Kth smallest value. 
+# Algorithms
+## Binary Search
+* It's quite easy, just make sure to get the indices right
+* The conditional is that left <= right
+* The left and right change to become either mid + 1 or mid - 1
+* The mid point is the starting point + the difference between the (high - low)/2
+```java
+public int search(int[] nums, int target) {
+        // Set the left and right boundaries
+        int left = 0, right = nums.length - 1;
+        
+        // Under this condition
+        while (left <= right) {
+            // Get the middle index and the middle value.
+            int mid = left + (right - left) / 2;
+            
+            // Case 1, return the middle index.
+            if (nums[mid] == target) {
+                return mid;
+            } 
+            // Case 2, discard the smaller half.
+            else if (nums[mid] < target) {
+                left = mid + 1;   
+            } 
+            // Case 3, discard the larger half.
+            else {
+                right = mid - 1;
+            }
+        }
+        
+        // If we finish the search without finding target, return -1.
+        return -1;
+    }
+```
 # Concepts
 ## Backtracking
 * A lot of backtracking involves passing a bunch of parameters into a recursive call.
