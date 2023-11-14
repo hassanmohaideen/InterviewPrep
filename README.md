@@ -59,12 +59,12 @@
 * Getting the height of a tree is easy!
 ```java
 private int height(TreeNode root) {
-  // An empty tree has height -1
+  // An empty tree has height 0
   if (root == null) {
-    return -1;
+    return 0;
   }
     return 1 + Math.max(height(root.left), height(root.right));
-  }
+}
 ```
 ## Stack and Queues
 ### Stacks
@@ -86,6 +86,7 @@ private int height(TreeNode root) {
   * We can use a max heap to get the Kth smallest value. 
 # Algorithms
 ## BFS
+* This can be used for finding the shortest path from A to B
 ## DFS
 * This is really useful for determining if there is path from A to B
 * This can be used for finding if there is a cycle 
