@@ -24,8 +24,21 @@
 6. Confirm the runtime and space complexities
 # Data Structures
 ## Arrays and HashMaps
-* When needing something that is Kth position (largest or smallest), we can use the Quick Select method from an unsorted array. 
-   * We divide the array into smaller and larger than the pivot. Then we figure out where the pivot position is and decide which side we need to continue the algorithm on.
+* When having to do something with subarrays of ints, think about using cumulative sums
+  * This is especially useful when needing to do something with an array with itself (multiply a product of array by itself)
+* When needing something that is Kth position (largest or smallest)
+  * We can use the Quick Select method from an unsorted array. 
+     * We divide the array into smaller and larger than the pivot. 
+     * Then we figure out where the pivot position is and decide which side we need to continue the algorithm on.
+  * We can use a minHeap or a maxHeap
+    * minHeap - when needing to get the kth LARGEST item
+      * Make a heap of size k
+      * Add items to the heap
+      * When you reach k+1 items, remove root item - this is the maximum item
+    * minHeap - when needing to get the kth SMALLEST item
+      * Make a heap of size k
+      * Add items to the heap
+      * When you reach k+1 items, remove root item - this is the minimum item
 * Don't just try to traverse the array from left to right (0..arr.length). 
   * Traverse it the reverse way. 
   * You can traverse it from the middle to the left and the right.
@@ -56,6 +69,8 @@
 * When determining whether to go top down or bottom up think about how you would solve the question. 
   * Do you need information from the bottom nodes to resolve the current node? 
   * Do you need information from the top node to resolve the current node?
+* Sometimes top-down and bottom-up are not the ways to go - instead think of preorder, inorder, and postorder traversal
+  * 
 * Getting the height of a tree is easy!
 ```java
 private int height(TreeNode root) {
