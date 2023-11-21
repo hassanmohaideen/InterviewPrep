@@ -168,5 +168,29 @@ public Set<List<Integer>> subsets(int[] nums, Set<List<Integer>> ans, List<Integ
 }
 ```
 * After making the recursive call, you will typically have to remove the element that you just added. The idea is that you choose one element and then not choose the next.
+* Getting unique combinations can mean that you sort the values first, and then not taking the value in the for-loop if it is the same as the value passed in through the recursive function. 
+  * See - https://leetcode.com/problems/combination-sum-ii/
+```java
+public void backTracking(
+    HashSet<List<Integer>> ans,
+    LinkedList<Integer> curr,
+    int[] candidates,
+    int target,
+    int pos
+) {
+    if (target == 0) {
+        ans.add(new ArrayList<Integer>(curr));
+    } else if (target > 0) {
+      for (int i=pos; i<candidates.length; i++) {
+          if (i != pos && candidates[i] == candidates[i - 1])
+              continue;
+          curr.addLast(candidates[i]);
+          backTracking(ans, curr, candidates, target-candidates[i], i+1);
+          curr.removeLast();
+      }
+    }
+}
+```
+* Take a look at the `if (i != pos && candidates[i] == candidates[i - 1])` this is meant to be that we don't take the next value if it is the same as the previous value (aka a duplicate)
 ## Merging Arrays
 * You can merge items by going through the array and then adding them to an item that you are going to put together
