@@ -46,6 +46,7 @@
   * Used with arrays it goes from left and then right
   * Can be used with LinkedList to find out if there is a cycle
 * You don't always have to look for values ahead of you. You can look for them behind you as you iterate through the array.
+* Think about using a sliding window when needing to find a the max subarray containing values
 ## Linked Lists (Single/Double)
 * Lots of questions rely on using FAST and SLOW pointers (has a cycle, get Kth from last, etc)
 * Sometimes deleting a node is just to remove connections to the node and let GC handle it
@@ -70,7 +71,7 @@
   * Do you need information from the bottom nodes to resolve the current node? 
   * Do you need information from the top node to resolve the current node?
 * Sometimes top-down and bottom-up are not the ways to go - instead think of preorder, inorder, and postorder traversal
-  * 
+* Completeness of a tree just means that you don't encounter a null node while BFS through the tree before encountering a non-null node
 * Getting the height of a tree is easy!
 ```java
 private int height(TreeNode root) {
@@ -99,6 +100,10 @@ private int height(TreeNode root) {
 ### Min/Max Heaps
 * Think about using this in the reverse way. Instead of just getting the minimum value, we can get the Kth largest value. 
   * We can use a max heap to get the Kth smallest value. 
+* Min/Max heaps have other applications
+  * K way merge of K sorted arrays
+  * Determining how many meeting rooms are needed for given intervals
+* Think about using this when you need to get the minimum value of the next thing happening
 # Algorithms
 ## BFS
 * This can be used for finding the shortest path from A to B
@@ -111,33 +116,19 @@ private int height(TreeNode root) {
 * The left and right change to become either mid + 1 or mid - 1
 * The mid point is the starting point + the difference between the (high - low)/2
 * Here is a helpful tip to quickly prove the correctness of your binary search algorithm during an interview. We just need to test an input of size 2. Check if it reduces the search space to a single element (which must be the answer) for both of the scenarios above. If not, your algorithm will never terminate.
-```java
-public int search(int[] nums, int target) {
-        // Set the left and right boundaries
-        int left = 0, right = nums.length - 1;
-        
-        // Under this condition
-        while (left <= right) {
-            // Get the middle index and the middle value.
-            int mid = left + (right - left) / 2;
-            
-            // Case 1, return the middle index.
-            if (nums[mid] == target) {
-                return mid;
-            } 
-            // Case 2, discard the smaller half.
-            else if (nums[mid] < target) {
-                left = mid + 1;   
-            } 
-            // Case 3, discard the larger half.
-            else {
-                right = mid - 1;
-            }
-        }
-        
-        // If we finish the search without finding target, return -1.
-        return -1;
-    }
+```python
+def binary_search(array) -> int:
+    def condition(value) -> bool:
+        pass
+
+    left, right = min(search_space), max(search_space) # could be [0, n], [1, n] etc. Depends on problem
+    while left < right:
+        mid = left + (right - left) // 2
+        if condition(mid):
+            right = mid
+        else:
+            left = mid + 1
+    return left
 ```
 # Concepts
 ## Backtracking
@@ -194,3 +185,11 @@ public void backTracking(
 * Take a look at the `if (i != pos && candidates[i] == candidates[i - 1])` this is meant to be that we don't take the next value if it is the same as the previous value (aka a duplicate)
 ## Merging Arrays
 * You can merge items by going through the array and then adding them to an item that you are going to put together
+* Think about merging backwards for sorted arrays
+* Think about using multiple pointers
+* Think about using heaps
+## Intervals
+* Determining whether intervals are overlapping you just have to see if the start of one is in the range of the other
+* When you are adding an interval into a list of intervals (and merging so that there are no-overlapping intervals). 
+  * You can first add the interval into the list in the sorted order
+  * Then you go through the intervals in the list and see whether or not you need to merge it with the next interval in the list
